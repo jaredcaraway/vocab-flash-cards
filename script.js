@@ -1,18 +1,43 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const words = ['example', 'vocabulary', 'flash', 'card', 'web', 'application'];
-    let currentWordIndex = 0;
+    const wordStatus = {
+        'example': { word: 'example', mastered: false },
+        'vocabulary': { word: 'vocabulary', mastered: false },
+        'flash': { word: 'flash', mastered: false },
+        // ... other words
+    };
+
+    let currentWordKey = Object.keys(wordStatus)[0];
     const flashCard = document.getElementById('flashCard');
     const wordDisplay = document.getElementById('word');
+    const pronounceBtn = document.getElementById('pronounceBtn');
+    const gotItBtn = document.getElementById('gotItBtn');
+    const needsWorkBtn = document.getElementById('needsWorkBtn');
+
+    const updateWordDisplay = () => {
+        wordDisplay.textContent = wordStatus[currentWordKey].word;
+        flashCard.style.backgroundColor = wordStatus[currentWordKey].mastered ? '#dff0d8' : '#f2dede';
+    };
 
     flashCard.addEventListener('click', () => {
-        if (currentWordIndex >= words.length) {
-            currentWordIndex = 0;
-        }
-        const word = words[currentWordIndex++];
-        wordDisplay.textContent = word;
+        currentWordKey = Object.keys(wordStatus)[Math.floor(Math.random() * Object.keys(wordStatus).length)];
+        updateWordDisplay();
+    });
 
-        // Web Speech API for voice synthesis
-        const utterance = new SpeechSynthesisUtterance(word);
+    pronounceBtn.addEventListener('click', () => {
+        const currentWord = wordDisplay.textContent;
+        const utterance = new SpeechSynthesisUtterance(currentWord);
         speechSynthesis.speak(utterance);
     });
+
+    gotItBtn.addEventListener('click', () => {
+        wordStatus[currentWordKey].mastered = true;
+        updateWordDisplay();
+    });
+
+    needsWorkBtn.addEventListener('click', () => {
+        wordStatus[currentWordKey].mastered = false;
+        updateWordDisplay();
+    });
+
+    updateWordDisplay(); // Initialize the display
 });
