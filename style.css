@@ -20,3 +20,27 @@ body {
 .card:hover {
     transform: scale(1.05);
 }
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.card, .mastered {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+}
+
+/* Mobile styles */
+@media (max-width: 600px) {
+    .container {
+        flex-direction: column;
+    }
+    .mastered {
+        max-height: 200px;
+        overflow-y: auto; /* Makes the mastered list scrollable */
+    }
+}
