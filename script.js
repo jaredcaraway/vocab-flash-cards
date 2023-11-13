@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
         Object.keys(masteredWords).forEach((key) => {
             const li = document.createElement('li');
             li.textContent = masteredWords[key].word;
+            li.classList.add('mastered-word'); // Add class to li element
             const pronounceButton = document.createElement('button');
             pronounceButton.textContent = '🔊';
             pronounceButton.onclick = () => {

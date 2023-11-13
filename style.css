@@ -1,6 +1,7 @@
 body, html {
     height: 100%;
     margin: 0;
+    font-family: "Poppins";
 }
 
 .container {
@@ -13,6 +14,10 @@ body, html {
     padding: 20px;
     overflow-y: auto; /* Allows scrolling */
     border-right: 2px solid #ddd; /* Separates the column visually */
+}
+
+.mastered-word button {
+    margin-left: 20px;
 }
 
 .card-container {
