@@ -6,14 +6,19 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="flashCard" class="card">
-        <h2 id="word">Click to see a word</h2>
-        <button id="pronounceBtn">Hear it 👂</button>
-        <div>
-            <button id="gotItBtn">Got it 👍</button>
+    <div class="container">
+        <div id="flashCard" class="card">
+            <h2 id="word">Click to see a word</h2>
+            <button id="pronounceBtn">Hear it 👂</button>
+            <button id="gotItBtn" style="display: none;">Got it 👍</button> <!-- Initially hidden -->
             <button id="needsWorkBtn">Needs work 👎</button>
         </div>
-    </div>      
+        
+        <div id="masteredColumn" class="mastered">
+            <h3>Mastered Words</h3>
+            <ul id="masteredList"></ul>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
